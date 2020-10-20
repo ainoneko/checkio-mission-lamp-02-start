@@ -1,0 +1,60 @@
+<!-- Describe task in general -->
+
+<p><i>
+    Это вторая миссия серии с лампочками. Я буду стараться усложнять их по немного. Как часто это бывает с требованиями к задачи.
+</i></p>
+
+<p>
+    Ты уже научился считать как долго горела лампочка, или как долго помещение было освещено. Теперь добавим еще один параметр - время начала подсчета.
+</p>
+
+<p>Это значит что лампочка продолжает включатся и выключатся, как раньше, просто теперь, как результат работы функции, я хочу не просто знать как долго было светло в комнате, а как долго комната была освещена, начиная с определенного момента.</p>
+
+<p>Добавляется еще один аргумент <pre>start_watching</pre> и если он не передан, значит считаем как и в предыдущей версии программы - за весь период</p>
+
+<p style="text-align: center;">
+    <img  title="example" src="{{MEDIA}}example.png" alt="example" style="max-height: 83px"/>
+</p>
+
+<!-- Explain input and output values -->
+<p>
+    <strong>Input: </strong> Two arguments. Both are ints.
+</p>
+
+<p>
+    <strong>Output: </strong> Int. 
+</p>
+
+
+<!-- Give some usage examples -->
+<div class="for_info_only">
+    <p>
+        <strong>Example:</strong>
+    </p>
+
+{% if interpreter.slug == "js-node" %}
+<pre class="brush: javascript">sumTwo(2, 3) == 5
+sumTwo(5, 7) == 12
+</pre>
+{% else %}
+<pre class="brush: python">sum_two(2, 3) == 5
+sum_two(5, 7) == 12
+</pre>
+{% endif %}
+</div>
+
+
+<!-- Here you can explain how it can be used in development -->
+<!-- The section is optional -->
+<p class="for_info_only">
+
+    <strong>How it’s used: </strong>
+    <i>(math is used everywhere)</i>
+</p>
+
+<!-- Here you can explain some constraints for input-->
+<!-- The section is optional -->
+<p>
+    <strong>Precondition:</strong>
+    <i>both given ints should be between -1000 and 1000</i>
+</p>
