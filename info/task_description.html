@@ -10,19 +10,19 @@
 
 <p>This means that the light continues to turn on and off as before. But now, as a result of the function, I want not only to know how long there was light in the room, but how long the room was lit, starting from a certain moment.</p>
 
-<p> One more argument is added <pre>start_watching</pre>, and if it’s not passed, we count as in the previous version of the program - for the entire period.</p>
+<p> One more argument is added <b>start_watching</b>, and if it’s not passed, we count as in the previous version of the program - for the entire period.</p>
 
-<p style="text-align: center;">
-    <img  title="example" src="{{MEDIA}}example.png" alt="example" style="max-height: 83px"/>
+<p style="text-align: center;" class="for_info_only">
+    <img  title="example" src="{{MEDIA}}composition.gif" alt="example" style="max-height: 400px"/>
 </p>
 
 <!-- Explain input and output values -->
 <p>
-    <strong>Input: </strong> Two arguments. Both are ints.
+    <strong>Input: </strong> Two arguments and only first one is required. The first one is {% if is_js %}array of Date objects{% else %}A list of datetime objects{% endif %} and the second one is {% if is_js %}Date object{% else %}datetime object{% endif %}.
 </p>
 
 <p>
-    <strong>Output: </strong> An int. 
+    <strong>Output: </strong> Amount of seconds as an integer. 
 </p>
 
 
@@ -32,13 +32,43 @@
         <strong>Example:</strong>
     </p>
 
-{% if interpreter.slug == "js-node" %}
-<pre class="brush: javascript">sumTwo(2, 3) == 5
-sumTwo(5, 7) == 12
+{% if is_js %}
+<pre class="brush: javascript">sumLight([
+    new Date(2015, 1, 12, 10, 0, 0),
+    new Date(2015, 1, 12, 10, 0, 10),
+],
+new Date(2015, 1, 12, 10, 0, 5)) == 5
+
+sumLight([
+    new Date(2015, 1, 12, 10, 0, 0),
+    new Date(2015, 1, 12, 10, 0, 10),
+], new Date(2015, 1, 12, 10, 0, 0)) == 10
+
+sumLight([
+    new Date(2015, 1, 12, 10, 0, 0),
+    new Date(2015, 1, 12, 10, 10, 10),
+    new Date(2015, 1, 12, 11, 0, 0),
+    new Date(2015, 1, 12, 11, 10, 10),
+], new Date(2015, 1, 12, 11, 0, 0)) == 610
 </pre>
 {% else %}
-<pre class="brush: python">sum_two(2, 3) == 5
-sum_two(5, 7) == 12
+<pre class="brush: python">sum_light([
+    datetime(2015, 1, 12, 10, 0, 0),
+    datetime(2015, 1, 12, 10, 0, 10),
+],
+datetime(2015, 1, 12, 10, 0, 5)) == 5
+
+sum_light([
+    datetime(2015, 1, 12, 10, 0, 0),
+    datetime(2015, 1, 12, 10, 0, 10),
+], datetime(2015, 1, 12, 10, 0, 0)) == 10
+
+sum_light([
+    datetime(2015, 1, 12, 10, 0, 0),
+    datetime(2015, 1, 12, 10, 10, 10),
+    datetime(2015, 1, 12, 11, 0, 0),
+    datetime(2015, 1, 12, 11, 10, 10),
+], datetime(2015, 1, 12, 11, 0, 0)) == 610
 </pre>
 {% endif %}
 </div>
@@ -46,15 +76,14 @@ sum_two(5, 7) == 12
 
 <!-- Here you can explain how it can be used in development -->
 <!-- The section is optional -->
-<p class="for_info_only">
 
-    <strong>How it’s used: </strong>
-    <i>(math is used everywhere)</i>
-</p>
-
-<!-- Here you can explain some constraints for input-->
-<!-- The section is optional -->
 <p>
     <strong>Precondition:</strong>
-    <i>both given ints should be between -1000 and 1000</i>
 </p>
+<ul>
+    <li><i>The array of pressing the button is always sorted in ascending order</i></li>
+    <li><i>The array of pressing the button has no repeated elements (which means the result should always be bigger than 0)</i></li>
+    <li><i>The amount of elements is always even (the light will eventually be off)</i></li>
+    <li><i>Minimum possible date is 1970-01-01</i></li>
+    <li><i>Minimum possible date is 202020-01-01</i></li>
+</ul>

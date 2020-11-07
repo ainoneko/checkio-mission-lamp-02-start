@@ -12,17 +12,17 @@
 
 <p>Добавляется еще один аргумент <pre>start_watching</pre> и если он не передан, значит считаем, как и в предыдущей версии программы - за весь период.</p>
 
-<p style="text-align: center;">
-    <img  title="example" src="{{MEDIA}}example.png" alt="example" style="max-height: 83px"/>
+<p style="text-align: center;" class="for_info_only">
+    <img  title="example" src="{{MEDIA}}composition.gif" alt="example" style="max-height: 400px"/>
 </p>
 
 <!-- Explain input and output values -->
 <p>
-    <strong>Input: </strong> Two arguments. Both are ints.
+    <strong>Input: </strong> Два аргумента и только первый обязательный. Первый это {% if is_js %}array of Date objects{% else %}A list of datetime objects{% endif %} и второй это {% if is_js %}Date object{% else %}datetime object{% endif %}.
 </p>
 
 <p>
-    <strong>Output: </strong> An int. 
+    <strong>Output: </strong> Колличество секунд как integer. 
 </p>
 
 
@@ -32,29 +32,56 @@
         <strong>Example:</strong>
     </p>
 
-{% if interpreter.slug == "js-node" %}
-<pre class="brush: javascript">sumTwo(2, 3) == 5
-sumTwo(5, 7) == 12
+
+{% if is_js %}
+<pre class="brush: javascript">sumLight([
+    new Date(2015, 1, 12, 10, 0, 0),
+    new Date(2015, 1, 12, 10, 0, 10),
+],
+new Date(2015, 1, 12, 10, 0, 5)) == 5
+
+sumLight([
+    new Date(2015, 1, 12, 10, 0, 0),
+    new Date(2015, 1, 12, 10, 0, 10),
+], new Date(2015, 1, 12, 10, 0, 0)) == 10
+
+sumLight([
+    new Date(2015, 1, 12, 10, 0, 0),
+    new Date(2015, 1, 12, 10, 10, 10),
+    new Date(2015, 1, 12, 11, 0, 0),
+    new Date(2015, 1, 12, 11, 10, 10),
+], new Date(2015, 1, 12, 11, 0, 0)) == 610
 </pre>
 {% else %}
-<pre class="brush: python">sum_two(2, 3) == 5
-sum_two(5, 7) == 12
+<pre class="brush: python">sum_light([
+    datetime(2015, 1, 12, 10, 0, 0),
+    datetime(2015, 1, 12, 10, 0, 10),
+],
+datetime(2015, 1, 12, 10, 0, 5)) == 5
+
+sum_light([
+    datetime(2015, 1, 12, 10, 0, 0),
+    datetime(2015, 1, 12, 10, 0, 10),
+], datetime(2015, 1, 12, 10, 0, 0)) == 10
+
+sum_light([
+    datetime(2015, 1, 12, 10, 0, 0),
+    datetime(2015, 1, 12, 10, 10, 10),
+    datetime(2015, 1, 12, 11, 0, 0),
+    datetime(2015, 1, 12, 11, 10, 10),
+], datetime(2015, 1, 12, 11, 0, 0)) == 610
 </pre>
 {% endif %}
 </div>
 
-
-<!-- Here you can explain how it can be used in development -->
-<!-- The section is optional -->
-<p class="for_info_only">
-
-    <strong>How it’s used: </strong>
-    <i>(math is used everywhere)</i>
-</p>
-
-<!-- Here you can explain some constraints for input-->
-<!-- The section is optional -->
 <p>
-    <strong>Precondition:</strong>
-    <i>both given ints should be between -1000 and 1000</i>
+    <strong>Предусловия:</strong>
 </p>
+
+<ul>
+    <li><i>Массив нажатий на кнопку всегда отсортирован по возрастанию</i></li>
+    <li><i>В массиве нажатий на кнопку нет повторяющихся элементов (это значит, что результат всегда больше нуля)</i></li>
+    <li><i>Колличество элементов всегда четное число (это значит, что лампочка, в конце концов, будет выключена)</i></li>
+    <li><i>Минимально возвожная дата 1970-01-01</i></li>
+    <li><i>Максимально возвожная дата 202020-01-01</i></li>
+</ul>

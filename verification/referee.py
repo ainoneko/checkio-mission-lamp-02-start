@@ -33,16 +33,36 @@ from checkio.referees import cover_codes
 
 from tests import TESTS
 
+all_datetime_py = '''
+def cover(func, in_data):
+    from datetime import datetime
+    args = [[datetime(*el) for el in in_data[0]]]
+    if len(in_data) > 1:
+        args.append(datetime(*in_data[1]))
+    return func(*args)
+'''
+
+all_datetime_js = '''
+function cover(func, in_data) {
+    var els = in_data[0].map(function(ee) {return new Date(ee[0], ee[1], ee[2], ee[3], ee[4], ee[5])});
+    var start_watching;
+    if (in_data.length > 1) {
+        start_watching = new Date(in_data[1][0], in_data[1][1], in_data[1][2], in_data[1][3], in_data[1][4], in_data[1][5]);
+    }
+    return func(els, start_watching);
+}
+'''
+
 api.add_listener(
     ON_CONNECT,
     CheckiOReferee(
         tests=TESTS,
         function_name={
-            "python": "sum_two",
-            "js": "sumTwo"
+            "python": "sum_light",
+            "js": "sumLight"
         },
         cover_code={
-            'python-3': cover_codes.unwrap_args,
-            'js-node': cover_codes.js_unwrap_args
+            'python-3': all_datetime_py,
+            'js-node': all_datetime_js
         }
     ).on_ready)
