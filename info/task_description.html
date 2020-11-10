@@ -5,12 +5,12 @@
 </i></p>
 
 <p>
-    You have already learned to count how long a light bulb has been on, or how long a room has been lit. Now let's add one more parameter - the counting start time.
+    You have already learned how to count the amount of time a light bulb has been on, or how long a room has been lit. Now let's add one more parameter - the counting start time.
 </p>
 
 <p>This means that the light continues to turn on and off as before. But now, as a result of the function, I want not only to know how long there was light in the room, but how long the room was lit, starting from a certain moment.</p>
 
-<p> One more argument is added <b>start_watching</b>, and if it’s not passed, we count as in the previous version of the program - for the entire period.</p>
+<p> One more argument is added – <b>start_watching</b>, and if it’s not passed, we count as in the previous version of the program for the entire period.</p>
 
 <p style="text-align: center;" class="for_info_only">
     <img  title="example" src="{{MEDIA}}composition.gif" alt="example" style="max-height: 400px"/>
@@ -18,11 +18,11 @@
 
 <!-- Explain input and output values -->
 <p>
-    <strong>Input: </strong> Two arguments and only first one is required. The first one is {% if is_js %}array of Date objects{% else %}A list of datetime objects{% endif %} and the second one is {% if is_js %}Date object{% else %}datetime object{% endif %}.
+    <strong>Input: </strong> Two arguments and only the first one is required. The first one is {% if is_js %}an array of Date objects{% else %}a list of datetime objects{% endif %} and the second one is {% if is_js %}a Date object{% else %}a datetime object{% endif %}.
 </p>
 
 <p>
-    <strong>Output: </strong> Amount of seconds as an integer. 
+    <strong>Output: </strong> A number of seconds as an integer. 
 </p>
 
 
@@ -84,6 +84,6 @@ sum_light([
     <li><i>The array of pressing the button is always sorted in ascending order</i></li>
     <li><i>The array of pressing the button has no repeated elements (which means the result should always be bigger than 0)</i></li>
     <li><i>The amount of elements is always even (the light will eventually be off)</i></li>
-    <li><i>Minimum possible date is 1970-01-01</i></li>
-    <li><i>Minimum possible date is 202020-01-01</i></li>
+    <li><i>The minimum possible date is 1970-01-01</i></li>
+    <li><i>The maximum possible date is 202020-01-01</i></li>
 </ul>
