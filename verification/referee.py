@@ -36,10 +36,11 @@ from tests import TESTS
 all_datetime_py = '''
 def cover(func, in_data):
     from datetime import datetime
-    args = [[datetime(*el) for el in in_data[0]]]
+    els = [datetime(*el) for el in in_data[0]]
+    kwargs = {}
     if len(in_data) > 1:
-        args.append(datetime(*in_data[1]))
-    return func(*args)
+        kwargs['start_watching'] = datetime(*in_data[1])
+    return func(els, **kwargs)
 '''
 
 all_datetime_js = '''
