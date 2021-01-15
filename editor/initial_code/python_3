@@ -16,11 +16,11 @@ if __name__ == '__main__':
     ],
     datetime(2015, 1, 12, 10, 0, 5)))
     
-    assert sum_light([
+    assert sum_light(els=[
         datetime(2015, 1, 12, 10, 0, 0),
         datetime(2015, 1, 12, 10, 0, 10),
     ],
-    datetime(2015, 1, 12, 10, 0, 5)) == 5
+    start_watching=datetime(2015, 1, 12, 10, 0, 5)) == 5
     
     assert sum_light([
         datetime(2015, 1, 12, 10, 0, 0),
