@@ -53,17 +53,17 @@ if __name__ == '__main__':
         datetime(2015, 1, 12, 10, 10, 10),
         datetime(2015, 1, 12, 11, 0, 0),
         datetime(2015, 1, 12, 11, 10, 10),
-        datetime(2015, 1, 12, 11, 10, 10),
-        datetime(2015, 1, 12, 12, 10, 10),
-    ], datetime(2015, 1, 12, 12, 10, 10)) == 0
+        datetime(2015, 1, 12, 11, 10, 11),
+        datetime(2015, 1, 12, 12, 10, 11),
+    ], datetime(2015, 1, 12, 12, 10, 11)) == 0
 
     assert sum_light([
         datetime(2015, 1, 12, 10, 0, 0),
         datetime(2015, 1, 12, 10, 10, 10),
         datetime(2015, 1, 12, 11, 0, 0),
         datetime(2015, 1, 12, 11, 10, 10),
-        datetime(2015, 1, 12, 11, 10, 10),
-        datetime(2015, 1, 12, 12, 10, 10),
-    ], datetime(2015, 1, 12, 12, 9, 10)) == 60
+        datetime(2015, 1, 12, 11, 10, 11),
+        datetime(2015, 1, 12, 12, 10, 11),
+    ], datetime(2015, 1, 12, 12, 9, 11)) == 60
     
     print("The second mission in series is done? Click 'Check' to earn cool rewards!")
